@@ -14,4 +14,8 @@ RUN git clone https://github.com/Sandarmann/nmap-screenshot.git \
 RUN wget -O wkhtml.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb \
     && dpkg -i  wkhtml.deb
 
-ENTRYPOINT nmap --script "http-screenshot" --script-args "tool=$TOOL" -p $PORTS $HOST
+RUN mkdir httpscreenshots
+
+WORKDIR httpscreenshots
+
+ENTRYPOINT ["/bin/bash", "-c", "echo $HOST; nmap --script http-screenshot --script-args tool=$TOOL $HOST -p $PORTS -d"]

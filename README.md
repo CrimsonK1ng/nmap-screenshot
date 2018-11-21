@@ -1,36 +1,26 @@
-nNmap-Tools
-==========
+# http-screenshot
 
-This repository is to host Nmap scripts and tools that may be helpful to penetration testers
-or security researchers.
+This tool is an attempt at making a safe script for screenshotting web pages
 
-Contents:
-/NSE - Nmap Scripting Engine (NSE) plugins
-### http-screenshot
+**Features**:
 * take with wkhtmltopdf 
 * take with chromium or chrome browser
 * take with firefox
 
-/NSE - Dockerfile
-### Dockerfile to take screenshots of provided webpage
+**Dockerfile**
+* Dockerfile to take screenshots of provided webpage
 
 
+## Usage
+```
+cp http-screenshot.nse /usr/share/nmap/scripts/http-screenshot.nse
+nmap --script-updatedb
+nmap --script http-screenshot --script-args tool=firefox/chromium-browser/chrome/wkhtmltoimage -p 80,8080,443,8888 <host>
+```
+Dockerfile
+```
+docker build -t nmap:screenshot .
+docker run -v /path/on/host:/httpscreenshots -e HOST=victim -e TOOL=firefox/chromium-browser/chrome/wkhtmltoimage -e PORTS="80,8080,443,8888,..." nmap:screenshot 
+```
 
-
-Copyright
-=========
-Copyright (C) 2012 Trustwave Holdings, Inc.
- 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
- 
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>
 
