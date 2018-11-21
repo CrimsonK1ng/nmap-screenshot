@@ -1,4 +1,4 @@
-Nmap-Tools
+nNmap-Tools
 ==========
 
 This repository is to host Nmap scripts and tools that may be helpful to penetration testers
@@ -6,8 +6,13 @@ or security researchers.
 
 Contents:
 /NSE - Nmap Scripting Engine (NSE) plugins
---- http-screenshot.nse - Takes a screenshot using wkhtmltoimage-i386 of found web pages 
+### http-screenshot
+* take with wkhtmltopdf 
+* take with chromium or chrome browser
+* take with firefox
 
+/NSE - Dockerfile
+### Dockerfile to take screenshots of provided webpage
 
 
 
